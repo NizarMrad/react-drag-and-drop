@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const dragItem = useRef()
+  const dragOverItem = useRef()
   const [list, setList] = useState([
     'React',
     'Javascript',
@@ -13,6 +14,12 @@ function App() {
   const dragStart=(e,position)=>{
     dragItem.current=position
     console.log(e.target.innerHTML)
+  }
+
+  const dragEnter = (e, position)=> {
+    dragOverItem.current=position
+    console.log(e.target.innerHTML)
+
   }
   return (
     <>
@@ -29,6 +36,7 @@ function App() {
               cursor: 'pointer',
             }}
             onDragStart={(e)=>dragStart(e,index)}
+            onDragEnter={(e)=>dragEnter(e,index)}
             key={index}
             draggable
           >
