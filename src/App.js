@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import './App.css';
 
 function App() {
+  const dragItem = useRef()
   const [list, setList] = useState([
     'React',
     'Javascript',
@@ -9,6 +10,10 @@ function App() {
     'Gatsby',
     'Ruby on Rails',
   ]);
+  const dragStart=(e,position)=>{
+    dragItem.current=position
+    console.log(e.target.innerHTML)
+  }
   return (
     <>
       {list &&
@@ -23,8 +28,8 @@ function App() {
               color: 'white',
               cursor: 'pointer',
             }}
+            onDragStart={(e)=>dragStart(e,index)}
             key={index}
-            class=""
             draggable
           >
             {item}
