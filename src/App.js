@@ -1,24 +1,36 @@
-
+import React, { useState, useRef } from 'react';
 import './App.css';
 
 function App() {
+  const [list, setList] = useState([
+    'React',
+    'Javascript',
+    'Node Js',
+    'Gatsby',
+    'Ruby on Rails',
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-      
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {list &&
+        list.map((item, index) => (
+          <div
+            style={{
+              backgroundColor: 'darkblue',
+              margin: '15px 25%',
+              textAlign: 'center',
+              fontSize: '30px',
+              borderRadius: '20px',
+              color: 'white',
+              cursor: 'pointer',
+            }}
+            key={index}
+            class=""
+            draggable
+          >
+            {item}
+          </div>
+        ))}
+    </>
   );
 }
 
